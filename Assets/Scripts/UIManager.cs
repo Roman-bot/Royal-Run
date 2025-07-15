@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //new comment!
         if (isGameOver) return; // If the game is over, skip the rest of the Update method  
         timer -= Time.deltaTime; // Decrease the timer by the time passed since the last frame  
         timerText.text = "Time: " + timer.ToString("F1"); // Update the timer text with a format specifier for one decimal place  
