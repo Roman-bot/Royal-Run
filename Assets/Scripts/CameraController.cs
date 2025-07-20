@@ -6,20 +6,19 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     ParticleSystem ParticleSystem;
 
-    Cinemachine.CinemachineVirtualCamera vcam;
-
+    Unity.Cinemachine.CinemachineCamera vcam;
 
     private void Start()
     {
         // Updated to use the recommended method for finding objects  
-        vcam = Object.FindFirstObjectByType<Cinemachine.CinemachineVirtualCamera>();
+        vcam = Object.FindFirstObjectByType<Unity.Cinemachine.CinemachineCamera>();
     }
 
     public void ChangeCameraFOV(float speedAmount)
     {
         StartCoroutine(ChangeCameraRoutine(speedAmount));
 
-        if(ParticleSystem != null && speedAmount >0)
+        if (ParticleSystem != null && speedAmount > 0)
         {
             ParticleSystem.Play(); // Play the particle system when changing camera FOV  
         }
@@ -27,13 +26,12 @@ public class CameraController : MonoBehaviour
         {
             Debug.LogWarning("ParticleSystem is not assigned in the inspector.");
         }
-
     }
 
     IEnumerator ChangeCameraRoutine(float speedAmount)
     {
         float duration = 1f; // Duration of the transition  
-        float startFOV = vcam.m_Lens.FieldOfView;
+        float startFOV = vcam.Lens.FieldOfView;
 
         float targetFOV = Mathf.Clamp(startFOV + speedAmount * 5, 30f, 90f); // Adjust FOV limits as needed  
 
@@ -42,11 +40,11 @@ public class CameraController : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / duration;
-            vcam.m_Lens.FieldOfView = Mathf.Lerp(startFOV, targetFOV, t);
+            vcam.Lens.FieldOfView = Mathf.Lerp(startFOV, targetFOV, t);
             yield return null;
         }
 
-        vcam.m_Lens.FieldOfView = targetFOV; // Ensure final value is set  
-        //Debug.Log("Camera FOV changed to: " + vcam.m_Lens.FieldOfView);
+        vcam.Lens.FieldOfView = targetFOV; // Ensure final value is set  
+        //Debug.Log("Camera FOV changed to: " + vcam.Lens.FieldOfView);
     }
 }

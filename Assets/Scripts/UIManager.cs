@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
 
 
     int currentScore;
-    public float timer = 2f;
+    public float timer;
 
     public void UpdateScore(int score)
     {
@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        timer = 5f;
     }
 
     // Update is called once per frame
@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
         timerText.text = "Time: " + timer.ToString("F1"); // Update the timer text with a format specifier for one decimal place  
         if (timer <= 0)
         {
-            // GameOver();  
+            GameOver();  
         }
     }
 

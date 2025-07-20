@@ -29,7 +29,7 @@ public class PlayerCollisionHandler : MonoBehaviour
         if (collision.gameObject.tag == "Checkpoint")
         {
            Debug.Log("Checkpoint reached: " + collision.gameObject.name);
-            uiManager.timer +=5f; // Increase the timer by 5 seconds when a checkpoint is reached
+            uiManager.timer +=2f; // Increase the timer by 5 seconds when a checkpoint is reached
             // Additional logic for handling player collision with checkpoints can be added here
         }
 

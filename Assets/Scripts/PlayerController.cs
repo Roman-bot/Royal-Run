@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     float moveSpeed = 10f;
     
     float xRange = 3f;
-    float yRange = 5f;
+    //float yRange = 3f;
 
     private void Awake()
     {
@@ -37,9 +37,9 @@ public class PlayerController : MonoBehaviour
 
         // Clamp the x position to the specified range
         newPosition.x = Mathf.Clamp(newPosition.x, -xRange, xRange);
-        newPosition.y = Mathf.Clamp(newPosition.y, -yRange, yRange);
+        newPosition.z = Mathf.Clamp(newPosition.z, -0.5f, 2f);
 
-        // Debug.Log("New Position: " + newPosition);
+         Debug.Log("New Position: " + newPosition);
 
         rb.MovePosition(newPosition);
     }

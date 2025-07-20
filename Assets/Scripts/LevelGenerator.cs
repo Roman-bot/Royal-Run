@@ -49,9 +49,9 @@ public class LevelGenerator : MonoBehaviour
     public void ChunkSpeedUP()
     {
         speed += speedChangeAmount;
-        if (speed > 20f)
+        if (speed > 15f)
         { 
-            speed = 20f;
+            speed = 15f;
         }
         cameraController.ChangeCameraFOV(speedChangeAmount);
     }
@@ -96,10 +96,10 @@ public class LevelGenerator : MonoBehaviour
         Vector3 pos = new Vector3(transform.position.x, transform.position.y, positionZ);
         GameObject chunkToSpawn = null; // Initialize the variable to avoid CS0165  
 
-        if (chunkSpawned % 3 == 0 && chunkSpawned != 0)
+        if (chunkSpawned % 6 == 0 && chunkSpawned != 0)
         {
             chunkToSpawn = checkpointChunk; // Assign a value to chunkToSpawn  
-            Debug.Log("Checkpoint chunk spawned at position: " + pos);
+            //Debug.Log("Checkpoint chunk spawned at position: " + pos);
         }
         else
         {
